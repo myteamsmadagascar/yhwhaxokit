@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>AXOKIT : L'IA AU SERVICE DE L'ÉDUCATION NATIONALE</title>
+<meta name="theme-color" content="#7dd3fc">
+
+<style>
+:root{
+  --blue:#2563eb;
+  --cyan:#06b6d4;
+  --violet:#8b5cf6;
+  --green:#10b981;
+  --gold:#f59e0b;
+  --red:#ef4444;
+
+  --bg1:#f8fbff;
+  --bg2:#eef6ff;
+  --bg3:#f8fafc;
+
+  --text:#0f172a;
+  --muted:#334155;
+
+  --glass:rgba(255,255,255,.92);
+  --stroke:rgba(15,23,42,.12);
+
+  --radius:24px;
+  --max:1120px;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(900px 500px at 10% 10%, rgba(37,99,235,.12), transparent 60%),
+    radial-gradient(700px 500px at 90% 20%, rgba(139,92,246,.12), transparent 60%),
+    radial-gradient(600px 500px at 50% 90%, rgba(245,158,11,.10), transparent 60%),
+    linear-gradient(180deg,var(--bg1),var(--bg2),var(--bg3));
+}
+
+.wrap{
+  max-width:var(--max);
+  margin:auto;
+  padding:24px 18px 70px;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:24px;
+}
+
+header img{
+  height:56px;
+  width:auto;
+  object-fit:contain;
+  filter:drop-shadow(0 8px 18px rgba(37,99,235,.22));
+}
+
+header h1{
+  margin:0;
+  font-size:20px;
+  letter-spacing:.2px;
+  font-weight:800;
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:var(--glass);
+  border:1px solid rgba(37,99,235,.16);
+  border-radius:var(--radius);
+  padding:34px 26px;
+  box-shadow:0 20px 50px rgba(15,23,42,.08);
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, rgba(37,99,235,.08), rgba(6,182,212,.04), rgba(139,92,246,.06));
+  pointer-events:none;
+}
+
+.hero > *{position:relative; z-index:1}
+
+.badge{
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--blue),var(--violet),var(--gold));
+  color:#fff;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.2px;
+  box-shadow:0 10px 25px rgba(37,99,235,.22);
+}
+
+.hero h2{
+  margin:16px 0 10px;
+  font-size:34px;
+  line-height:1.2;
+}
+
+.hero p{
+  margin:0;
+  font-size:16px;
+  line-height:1.8;
+  color:var(--muted);
+  max-width:900px;
+}
+
+/* SECTION */
+section{margin-top:28px}
+
+.card{
+  background:var(--glass);
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  padding:28px 24px;
+  box-shadow:0 16px 40px rgba(15,23,42,.08);
+}
+
+.card.cyan{border-top:6px solid var(--cyan)}
+.card.violet{border-top:6px solid var(--violet)}
+.card.green{border-top:6px solid var(--green)}
+.card.gold{border-top:6px solid var(--gold)}
+.card.red{border-top:6px solid var(--red)}
+.card.blue{border-top:6px solid var(--blue)}
+
+h2{
+  margin:0 0 16px;
+  font-size:24px;
+  line-height:1.25;
+}
+
+h3{
+  margin:24px 0 12px;
+  font-size:18px;
+  line-height:1.4;
+}
+
+p, li, td, th{
+  font-size:15px;
+  line-height:1.9;
+  color:var(--muted);
+}
+
+p{margin:0 0 14px}
+ul{
+  margin:0;
+  padding-left:20px;
+}
+li{margin:8px 0}
+
+.lead{
+  font-size:16px;
+  color:#1e293b;
+}
+
+.highlight{
+  background:linear-gradient(180deg, rgba(37,99,235,.06), rgba(255,255,255,.7));
+  border:1px solid rgba(37,99,235,.12);
+  border-radius:18px;
+  padding:18px 18px;
+  margin-top:16px;
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.info-box{
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--stroke);
+  border-radius:18px;
+  padding:18px;
+}
+
+.info-box h3{
+  margin-top:0;
+}
+
+/* TABLE */
+.table-wrap{
+  margin-top:16px;
+  overflow-x:auto;
+  border-radius:18px;
+  border:1px solid var(--stroke);
+  background:white;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:720px;
+}
+
+th, td{
+  padding:15px 16px;
+  text-align:left;
+  vertical-align:top;
+  border-bottom:1px solid rgba(15,23,42,.08);
+}
+
+th{
+  background:linear-gradient(90deg, rgba(37,99,235,.08), rgba(139,92,246,.08));
+  color:var(--text);
+  font-weight:800;
+}
+
+tr:last-child td{
+  border-bottom:none;
+}
+
+/* LINKS */
+.links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+
+.links a{
+  text-decoration:none;
+  padding:10px 16px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:14px;
+  color:var(--text);
+  background:rgba(255,255,255,.86);
+  border:1px solid var(--stroke);
+  transition:.2s ease;
+}
+
+.links a:hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 18px rgba(15,23,42,.08);
+}
+
+/* FOOT */
+.footer-note{
+  margin-top:16px;
+  padding:18px;
+  border-radius:18px;
+  background:linear-gradient(90deg, rgba(16,185,129,.10), rgba(37,99,235,.08));
+  border:1px solid rgba(15,23,42,.08);
+  font-weight:700;
+  color:#0f172a;
+}
+
+@media(max-width:900px){
+  .hero h2{font-size:28px}
+  .grid-2{grid-template-columns:1fr}
+  header h1{font-size:18px}
+}
+
+@media(max-width:600px){
+  .wrap{padding:18px 14px 52px}
+  .hero{padding:26px 18px}
+  .card{padding:22px 18px}
+  .hero h2{font-size:24px}
+  h2{font-size:21px}
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header>
+    <img src="logoaxokit.png" alt="AXOKIT">
+    <h1>Application IA de soutien scolaire</h1>
+  </header>
+
+  <section class="hero">
+    <span class="badge">Souveraineté Numérique – Solidarité – Excellence Scientifique</span>
+    <h2>AXOKIT : L'IA AU SERVICE DE L'ÉDUCATION NATIONALE</h2>
+    <p>
+      Une solution éducative moderne, lisible, concrète et immédiatement déployable pour renforcer
+      l’enseignement scientifique à Madagascar.
+    </p>
+  </section>
+
+  <section class="card cyan">
+    <h2>LE CONCEPT</h2>
+    <p class="lead">
+      Axokit est une station d'IA scientifique 100 % autonome (Offline) offrant un tutorat de haut niveau en Mathématiques, Physique et Chimie.
+    </p>
+
+    <div class="grid-2">
+      <div class="info-box">
+        <h3>Mode Local</h3>
+        <p>
+          Fonctionne sans internet pour les établissements non équipés
+          (données sécurisées à Madagascar).
+        </p>
+      </div>
+
+      <div class="info-box">
+        <h3>Mode Web</h3>
+        <p>
+          Gratuité totale pour les lycées déjà connectés, utilisable immédiatement
+          sur leur parc informatique existant.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card violet">
+    <h2>LE MODÈLE ÉCONOMIQUE : SOLIDARITÉ NATIONALE</h2>
+    <p>
+      Le projet repose sur un mécanisme de péréquation entre le secteur privé et le secteur public.
+    </p>
+
+    <ul>
+      <li>
+        <strong>Secteur Privé (Le Levier) :</strong>
+        Les établissements privés souscrivent à une licence annuelle « Premium » adaptée à leur catégorie et utilise l’application Axokit gratuitement.
+      </li>
+      <li>
+        <strong>Secteur Public (Le Bénéficiaire) :</strong>
+        Grâce aux fonds du privé, l’État équipe gratuitement les collèges et lycées publics.
+      </li>
+      <li>
+        <strong>Coût pour le Public :</strong>
+        0 € (Matériel, logiciel, installation et maintenance).
+      </li>
+      <li>
+        <strong>Impact Social :</strong>
+        Distribution d'un petit-déjeuner quotidien aux élèves (via l’organisme Bii).
+      </li>
+    </ul>
+  </section>
+
+  <section class="card gold">
+    <h2>Accord-cadre national Axokit</h2>
+
+    <div class="highlight">
+      <h3>Côté PRIVÉ (La contrepartie) :</h3>
+      <ul>
+        <li>L'État rend l'utilisation de l'IA obligatoire dans le cursus scolaire national.</li>
+        <li>L'État autorise notre entreprise à collecter des frais de licence auprès des établissements privés (selon les tarifs 2 €, 5 €, 20 €, etc..).</li>
+        <li>L'État facilite l'intégration de l'application dans les listes de fournitures agréées.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card green">
+    <h2>3. Pourquoi l’État est-il gagnant ?</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Avantages pour l’État</th>
+            <th>Détails</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Économie massive</strong></td>
+            <td>
+              L’État équipe le public avec une technologie de pointe sans dépenser un seul Ariary en logiciels.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Souveraineté</strong></td>
+            <td>
+              <strong>Mode Local (Souveraineté) :</strong> L'IA fonctionne sans Internet, en circuit fermé.
+              Les données des élèves restent physiquement stockées à Madagascar pour une sécurité nationale totale.
+              <br><br>
+              <strong>Mode Web (Flexibilité) :</strong> Les établissements privés déjà connectés utilisent l'application en ligne sur leur parc informatique existant, sans besoin d'achat matériel supplémentaire.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Résultats scolaires</strong></td>
+            <td>
+              Tuteur IA 24h/24 pour soutenir enseignants et améliorer BEPC/BAC.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Image politique</strong></td>
+            <td>
+              Madagascar devient pionnier africain de l’IA éducative gratuite.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer-note">
+      AXOKIT permet de moderniser l’école, de renforcer la souveraineté numérique
+      et d’améliorer l’égalité des chances sans charge financière directe pour l’État.
+    </div>
+  </section>
+
+  <section class="card blue">
+    <h2>Navigation</h2>
+    <div class="links">
+      <a href="lettre.html">Lire la lettre de sollicitation</a>
+      <a href="accord.html">Voir l’accord-cadre</a>
+      <a href="luttefaim.html">Programme lutte contre la faim</a>
+      <a href="index.html">Retour à l’accueil</a>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

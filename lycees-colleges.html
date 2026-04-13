@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Axokit – Lycées & Collèges privés</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Poppins;
+background:
+radial-gradient(900px 400px at 10% 10%, rgba(37,99,235,.12), transparent 60%),
+radial-gradient(900px 400px at 90% 20%, rgba(212,175,55,.14), transparent 60%),
+linear-gradient(180deg,#f8fbff,#eef2ff);
+}
+
+.wrap{max-width:1250px;margin:auto;padding:14px}
+
+header{
+background:white;
+border-radius:22px;
+padding:14px;
+display:flex;
+gap:14px;
+align-items:center;
+box-shadow:0 12px 40px rgba(0,0,0,.08)
+}
+
+header img{height:52px}
+
+h1{margin:0;font-size:18px}
+
+.buttons{
+margin:12px 0;
+display:flex;
+flex-wrap:wrap;
+gap:8px
+}
+
+.btn{
+border:none;
+padding:10px 14px;
+border-radius:12px;
+font-weight:800;
+background:white;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+cursor:pointer
+}
+
+.blue{background:#2563eb;color:white}
+.green{background:#16a34a;color:white}
+.red{background:#c1121f;color:white}
+
+.section{
+background:white;
+border-radius:22px;
+padding:14px;
+margin-top:16px;
+box-shadow:0 12px 40px rgba(0,0,0,.06)
+}
+
+.lycee h2{color:#2563eb}
+.college h2{color:#16a34a}
+
+.tablewrap{
+overflow-x:auto;
+margin-top:10px
+}
+
+table{
+border-collapse:collapse;
+min-width:950px;
+font-size:13px
+}
+
+th,td{
+border:1px solid #ccd4ff;
+padding:8px
+}
+
+th{background:#eef2ff}
+
+pre{
+white-space:pre-wrap;
+font-family:Poppins;
+font-size:13px;
+line-height:1.6
+}
+
+.quote{
+margin-top:10px;
+padding:10px;
+border-left:5px solid #d4af37;
+background:#fff8e6;
+font-weight:600
+}
+
+@media(max-width:700px){
+h1{font-size:16px}
+table{font-size:11px}
+}
+
+</style>
+</head>
+
+<body>
+<div class="wrap" id="page">
+
+<header>
+<img src="logoaxokit.png">
+<h1>Grilles tarifaires – Lycées & Collèges privés à Madagascar</h1>
+</header>
+
+<div class="buttons">
+<button class="btn" onclick="location.href='index.html'">Retour accueil</button>
+<button class="btn" onclick="location.href='pc.html'">Voir configuration PC</button>
+<button class="btn blue" onclick="window.open('https://www.axokit.com')">Voir l’application</button>
+<button class="btn red" onclick="pdfLycee()">PDF Lycées privés</button>
+<button class="btn green" onclick="pdfCollege()">PDF Collèges privés</button>
+<button class="btn" onclick="pdfAll()">Télécharger toute la page</button>
+</div>
+
+<!-- LYCEES -->
+
+<div class="section lycee" id="lycee">
+
+<h2>🎓 Lycées privés à Madagascar – Grille tarifaire cohérente de l’application numérique</h2>
+
+<div class="tablewrap">
+<table>
+<tr><th>Tranche</th><th>Scolarité Ar/an</th><th>% appli</th><th>Prix €</th><th>Prix Ar</th><th>Nb enfants</th><th>%</th><th>École</th><th>Interprétation</th></tr>
+
+<tr><td>300–500 €</td><td>1 500 000–2 500 000</td><td>5 %</td><td>15–25 €</td><td>75 000–125 000</td><td>≈ 25 000</td><td>≈ 8 %</td><td>Lycée privé local modeste</td><td>Effort faible, adoption facilitée</td></tr>
+
+<tr><td>500–750 €</td><td>2 500 000–3 750 000</td><td>6 %</td><td>30–45 €</td><td>150 000–225 000</td><td>≈ 44 000</td><td>≈ 14 %</td><td>Lycée privé structuré</td><td>Outil perçu comme normal</td></tr>
+
+<tr><td>750–1 000 €</td><td>3 750 000–5 000 000</td><td>7 %</td><td>50–70 €</td><td>250 000–350 000</td><td>≈ 43 000</td><td>≈ 14 %</td><td>Lycée privé supérieur / bilingue</td><td>Numérique intégré à la pédagogie</td></tr>
+
+<tr><td>1 000–2 000 €</td><td>5 000 000–10 000 000</td><td>8 %</td><td>80–160 €</td><td>400 000–800 000</td><td>≈ 80 000</td><td>≈ 26 %</td><td>Lycée haut de gamme</td><td>Attente forte d’outils premium</td></tr>
+
+<tr><td>> 2 000 €</td><td>> 10 000 000</td><td>10 %</td><td>≥ 200 €</td><td>≥ 1 000 000</td><td>≈ 114 000</td><td>≈ 38 %</td><td>Lycées internationaux premium</td><td></td></tr>
+</table>
+</div>
+
+<pre>💰 Exemples concrets de frais (pour cadrer les fourchettes)
+🏫 Écoles internationales haut de gamme (>>> 2 000 €, souvent très supérieures)
+• American School of Antananarivo (ASA) : frais annuels pour le secondaire (lycée) aux alentours de ≈ 21 000 USD (~19 600 €) d’après des données tarifaires antérieures.
+• Lycée Français de Tananarive (AEFE) : frais annuels estimés pour lycée ≈ 14 050 000–29 970 000 Ar (~2 810–5 995 €).
+👉 Ces établissements représentent une part importante de la tranche > 2 000 €, d’où la part élevée dans cette fourchette.
+
+🏫 Lycées haut de gamme / internationaux moyens (1 000–2 000 €)
+• Collèges/lycées privés supérieurs avec programmes bilingues ou réseaux francophones/anglophones (ex. British School of Madagascar offre un enseignement secondaire avec frais mensuels autour de ~£817.87/mois soit ~≈ 9 800 € par an si annualisés — mais peuvent varier selon options).
+
+🏫 Privé intermédiaire & local
+• De nombreuses écoles privées malgaches ont des frais significativement plus bas (souvent définis localement), qui se retrouvent dans les tranches < 1 000 €.
+💡 Il n’existe pas une base officielle exhaustive des frais de tous les établissements privés, donc ces répartitions restent des estimations cohérentes avec :
+• Les tarifs publics visibles pour certains établissements internationaux,
+• Le fonctionnement du marché privé local,
+• Les volumes d’élèves estimés au niveau national.</pre>
+
+</div>
+
+<!-- COLLEGES -->
+
+<div class="section college" id="college">
+
+<h2>🎓 Collèges privés à Madagascar – Grille tarifaire cohérente de l’application numérique</h2>
+
+<pre>• Collégiens privés à Madagascar : ≈ 417 000 élèves
+• Taux de change : 1 € ≈ 5 000 Ar
+• Répartition basée sur :
+o Forte majorité d’écoles privées locales à coûts bas,
+o Minorité d’écoles intermédiaires,
+o Très faible part d’écoles internationales/premium.</pre>
+
+<div class="tablewrap">
+<table>
+<tr><th>Tranche</th><th>Scolarité</th><th>%</th><th>€</th><th>Ar</th><th>Nb</th><th>%</th><th>École</th><th>Interprétation</th></tr>
+
+<tr><td>300–500 €</td><td>1 500 000–2 500 000</td><td>5 %</td><td>15–25 €</td><td>75 000–125 000</td><td>≈ 125 000</td><td>≈ 30 %</td><td>Privé intermédiaire modéré</td><td>Prix très accessible, effort faible, forte adoption</td></tr>
+
+<tr><td>500–750 €</td><td>2 500 000–3 750 000</td><td>6 %</td><td>30–45 €</td><td>150 000–225 000</td><td>≈ 85 000</td><td>≈ 20 %</td><td>Privé structuré</td><td>Outil pédagogique perçu comme normal</td></tr>
+
+<tr><td>750–1 000 €</td><td>3 750 000–5 000 000</td><td>7 %</td><td>50–70 €</td><td>250 000–350 000</td><td>≈ 50 000</td><td>≈ 12 %</td><td>Privé supérieur / bilingue</td><td>Intégration naturelle dans l’offre éducative</td></tr>
+
+<tr><td>1 000–2 000 €</td><td>5 000 000–10 000 000</td><td>8 %</td><td>80–160 €</td><td>400 000–800 000</td><td>≈ 100 000</td><td>≈ 24 %</td><td>Réseau français / international moyen</td><td>Numérique vu comme standard de qualité</td></tr>
+
+<tr><td>> 2 000 €</td><td>> 10 000 000</td><td>10 %</td><td>≥ 200 €</td><td>≥ 1 000 000</td><td>≈ 57 000</td><td>≈ 14 %</td><td>Écoles internationales premium</td><td></td></tr>
+</table>
+</div>
+
+<pre>Total : ≈ 417 000 collégiens privés (100 %)
+
+• 66 % des collégiens privés paient moins de 1 000 € de scolarité, donc ont un prix appli volontairement contenu.
+• 38 % sont dans des établissements capables de financer un outil numérique premium sans contrainte.
+• Le prix reste toujours inférieur ou comparable au standard européen (100 €) pour les écoles intermédiaires,
+et peut dépasser largement 100 € pour les écoles très haut de gamme — ce qui est logique et assumé.
+
+• ≈ 10 % sont dans des écoles très élitistes (>2 000 € / an)
+
+👉 Cela confirme que :
+• Le privé à Madagascar n’est pas homogène,
+• Une élite éducative minoritaire concentre les coûts élevés,
+• La majorité reste dans des établissements intermédiaires mais coûteux pour les familles locales.
+
+« Dans les collèges privés malgaches, près de 40 % des élèves paient plus de 1 000 € par an, tandis que la majorité reste concentrée dans des établissements intermédiaires, où l’effort financier demeure très élevé au regard des revenus des familles. »
+
+« Le tarif de l’application est indexé sur la cotisation annuelle des collèges privés.
+Il représente une fraction maîtrisée du budget scolaire, garantissant équité, acceptabilité et viabilité économique. »</pre>
+
+</div>
+
+</div>
+
+<script>
+function pdfLycee(){html2pdf().from(document.getElementById("lycee")).save("Lycees_prives_Axokit.pdf")}
+function pdfCollege(){html2pdf().from(document.getElementById("college")).save("Colleges_prives_Axokit.pdf")}
+function pdfAll(){html2pdf().from(document.getElementById("page")).save("Axokit_prive_complet.pdf")}
+</script>
+
+</body>
+</html>

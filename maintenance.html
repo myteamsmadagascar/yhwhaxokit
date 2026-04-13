@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Programme National 1 000 Classes IA – AXOKIT</title>
+
+<style>
+:root{
+--blue:#1f4fd8;
+--pink:#ff2d55;
+--gold:#d4af37;
+}
+
+body{
+margin:0;
+font-family:Segoe UI,system-ui;
+background:
+radial-gradient(900px 500px at 10% 0%,rgba(31,79,216,.14),transparent),
+radial-gradient(900px 500px at 90% 10%,rgba(255,45,85,.12),transparent),
+linear-gradient(180deg,#ffffff,#eef3ff);
+color:#0b1220;
+}
+
+/* BARRE HAUTE */
+.topbar{
+height:6px;
+background:linear-gradient(90deg,var(--gold),var(--pink),var(--blue));
+}
+
+/* HEADER */
+header{
+background:rgba(255,255,255,.9);
+backdrop-filter:blur(10px);
+border-bottom:1px solid #ddd;
+}
+
+.headerWrap{
+max-width:1100px;
+margin:auto;
+padding:14px 18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+header img{height:46px}
+
+/* BOUTONS */
+.btn{
+padding:10px 18px;
+border-radius:14px;
+font-weight:900;
+text-decoration:none;
+background:white;
+border:2px solid var(--blue);
+color:#0b1220;
+box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+.btn.primary{
+border:none;
+color:white;
+background:linear-gradient(90deg,var(--gold),var(--pink),var(--blue));
+}
+
+/* CONTENU */
+.wrap{
+max-width:1100px;
+margin:auto;
+padding:30px 20px 60px;
+}
+
+.card{
+background:white;
+border-radius:22px;
+padding:30px;
+margin-bottom:24px;
+box-shadow:0 20px 50px rgba(0,0,0,.12);
+border:1px solid rgba(31,79,216,.2);
+}
+
+h1{color:var(--blue)}
+h2{color:var(--pink)}
+h3{color:var(--blue)}
+
+p{line-height:1.7;font-weight:600}
+
+.highlight{
+background:#f4f7ff;
+border-left:5px solid var(--blue);
+padding:12px 16px;
+margin:12px 0;
+font-weight:700;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin:15px 0;
+}
+
+th,td{
+border:1px solid #ccc;
+padding:10px;
+font-weight:600;
+}
+
+th{
+background:#eef2ff;
+font-weight:900;
+}
+
+.italic{font-style:italic}
+.bold{font-weight:900}
+
+footer{
+text-align:center;
+padding:40px;
+font-weight:800;
+color:#666;
+}
+
+/* PRINT */
+@media print{
+header,.actions,.topbar{display:none}
+body{background:white}
+.card{box-shadow:none;border:none}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar"></div>
+
+<header>
+<div class="headerWrap">
+<img src="logoaxokit.png">
+
+<div class="actions">
+<a class="btn" href="pc.html">Prérequis PC</a>
+<a class="btn" href="option.html">Options</a>
+<button class="btn primary" onclick="window.print()">Télécharger PDF (A4)</button>
+</div>
+</div>
+</header>
+
+<div class="wrap">
+
+<div class="card">
+
+<h1>Objet : Note de Présentation du "Programme National 1 000 Classes IA" – Solution de Haute Résilience sans Maintenance Externe</h1>
+
+<h2>1. Vision : L'Autonomie au service de l'Éducation</h2>
+
+<p>
+Ce projet ne se contente pas d'apporter le numérique dans les CEG ; il installe une infrastructure auto-gérée.
+Contrairement aux solutions informatiques classiques qui échouent faute de maintenance, notre modèle repose sur la
+<span class="bold italic">"Robustesse Native"</span>. Nous éliminons le besoin de techniciens locaux en investissant dans des composants qui ne tombent pas en panne.
+</p>
+
+<h2>2. Le Choix de la Qualité pour une Maintenance Zéro</h2>
+
+<table>
+<tr><th>Composant</th><th>Description</th></tr>
+<tr><td>Stockage SSD 500 Go</td><td>Là où les standards proposent 128 Go, nous installons 500 Go. Ce surplus de capacité empêche la saturation du système (cause n°1 des ralentissements) et garantit une durée de vie logicielle triplée.</td></tr>
+<tr><td>Batteries LiFePO4 (200Ah)</td><td>Contrairement au Plomb, ces batteries supportent la chaleur de Madagascar, ne demandent aucun entretien (pas d'eau à ajouter) et offrent plus de 6 000 cycles. C'est l'assurance d'une énergie stable pendant toute une décennie.</td></tr>
+<tr><td>Câblage de Sécurité (35mm²)</td><td>Une section de câble surdimensionnée pour supprimer tout risque d'échauffement ou d'incendie, rendant l'installation intrinsèquement sûre pour les élèves et les bâtiments.</td></tr>
+</table>
+
+<h2>3. Stratégie de Résilience : Le Stock de Sécurité (Spare)</h2>
+
+<p>
+Dotation de secours (10%) : En plus des 1 000 kits installés, nous livrons à l'État un stock de 100 PC et 100 projecteurs de réserve.
+</p>
+
+<p>
+Simplicité de remplacement : Le matériel est conçu pour être <span class="italic">"Plug & Play"</span>. En cas de défaillance d'un écran ou d'un PC, le personnel de l'école peut effectuer lui-même l'échange standard en quelques minutes sans aucune compétence informatique.
+</p>
+
+<h2>4. Protocole d’Usage, Auto-Entretien et Maintenance Multiniveau</h2>
+
+<h3>Niveau 1 : L'Auto-Entretien (Prévention Quotidienne)</h3>
+
+<div class="highlight">
+Gestion Thermique : Respect strict des cycles de fonctionnement (pauses de 20 minutes toutes les 2 heures).
+<br><br>
+Hygiène Technique : Protocole de nettoyage hebdomadaire des filtres et des ouïes d'aération.
+<br><br>
+Procédure d'Extinction : Utilisation impérative de la télécommande pour garantir le refroidissement post-utilisation.
+</div>
+
+<h3>Niveau 2 : Assistance Technique Distante (Hotline)</h3>
+
+<p>
+En cas d'anomalie, le professeur accède immédiatement à notre Hotline Technique.
+Nos experts guident l'utilisateur par téléphone ou messagerie (photos/vidéos).
+</p>
+
+<h3>Niveau 3 : Intervention Mobile et Expertise Terrain</h3>
+
+<p>
+Déplacement d'Experts – Remise en État Immédiate – Garantie de Continuité.
+</p>
+
+<h2>5. Analyse Budgétaire Consolidée</h2>
+
+<table>
+<tr><th>Poste</th><th>Investissement</th><th>Valeur pour l'État</th></tr>
+<tr><td>Kit Classe IA + Solaire</td><td>~1 700 €</td><td>Matériel durci, durée de vie > 8 ans.</td></tr>
+<tr><td>Stock de Sécurité (10%)</td><td>Inclus</td><td>Garantie de service sans technicien.</td></tr>
+<tr><td>Impact / Elève / An</td><td>~1,15 €</td><td>Le coût le plus bas du marché mondial.</td></tr>
+</table>
+
+<div class="highlight">
+Conclusion : En finançant ce programme, l'État malgache achète une infrastructure souveraine et indépendante.
+C'est une solution "installez et oubliez".
+</div>
+
+<h2>ANNEXE TECHNIQUE : Stratégie de Résilience et Kit de Remplacement Standard</h2>
+
+<p class="italic">
+(auto-réparation par échange standard, détrompeurs de couleur, diagnostic visuel, rotation annuelle, guide d’auto-entretien)
+</p>
+
+</div>
+
+</div>
+
+<footer>
+AXOKIT – Station IA Scientifique – Madagascar<br>
+Former aujourd’hui les talents de demain
+</footer>
+
+</body>
+</html>

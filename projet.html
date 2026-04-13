@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>PROJET – STATION IA SCIENTIFIQUE</title>
+
+<style>
+:root{
+  --blue:#1f4fd8;
+  --cyan:#0ea5e9;
+  --green:#16a34a;
+  --red:#dc2626;
+  --orange:#f59e0b;
+  --bg:#edf2ff;
+  --card:#ffffff;
+  --text:#0b1220;
+  --muted:#475569;
+  --line:#dbeafe;
+  --shadow:0 10px 30px rgba(0,0,0,.10);
+  --radius:18px;
+  --max:1100px;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  font-family:Segoe UI,Arial,sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(31,79,216,.10), transparent 28%),
+    radial-gradient(circle at top right, rgba(14,165,233,.10), transparent 22%),
+    linear-gradient(180deg,#f4f7ff,#edf2ff 50%,#f8fbff);
+  color:var(--text);
+}
+
+header{
+  background:linear-gradient(90deg,#1f4fd8,#0ea5e9,#16a34a);
+  color:#fff;
+  padding:22px 16px;
+  text-align:center;
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:.2px;
+  box-shadow:0 8px 24px rgba(31,79,216,.20);
+}
+
+.wrap{
+  max-width:var(--max);
+  margin:auto;
+  padding:14px;
+}
+
+.actions{
+  text-align:center;
+  margin:12px 0 16px;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+button,
+.action-link{
+  background:#1f4fd8;
+  color:#fff;
+  border:none;
+  padding:10px 20px;
+  border-radius:999px;
+  font-weight:800;
+  text-decoration:none;
+  font-size:14px;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(31,79,216,.18);
+}
+
+.section{
+  background:var(--card);
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:18px;
+  box-shadow:var(--shadow);
+}
+
+h2{
+  color:#1f4fd8;
+  border-bottom:2px solid #1f4fd8;
+  padding-bottom:6px;
+  margin-top:0;
+  font-size:22px;
+}
+
+h3{
+  color:#16a34a;
+  margin-top:18px;
+  margin-bottom:8px;
+  font-size:18px;
+}
+
+h4{
+  color:#0ea5e9;
+  margin-top:14px;
+  margin-bottom:8px;
+}
+
+.frame{
+  border-left:6px solid #1f4fd8;
+  padding:12px;
+  background:#f8fbff;
+  border-radius:10px;
+  margin:12px 0;
+}
+
+pre{
+  white-space:pre-wrap;
+  font-size:14px;
+  line-height:1.7;
+  margin:0;
+  font-family:inherit;
+  color:var(--text);
+}
+
+p, li{
+  font-size:14px;
+  line-height:1.8;
+  color:var(--muted);
+}
+
+.blue{color:#1f4fd8;font-weight:800}
+.green{color:#16a34a;font-weight:800}
+.orange{color:#f59e0b;font-weight:800}
+.italic{font-style:italic;color:#0ea5e9;line-height:1.8}
+
+.table-card{
+  background:linear-gradient(180deg,#ffffff,#f8fbff);
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+table{
+  width:100%;
+  min-width:760px;
+  border-collapse:collapse;
+  font-size:14px;
+}
+
+th{
+  background:linear-gradient(90deg,#1f4fd8,#0ea5e9);
+  color:#fff;
+  padding:12px 10px;
+  text-align:left;
+  font-size:13px;
+  letter-spacing:.2px;
+}
+
+td{
+  border-bottom:1px solid #dbe4f3;
+  padding:12px 10px;
+  vertical-align:top;
+  color:#1e293b;
+  line-height:1.7;
+}
+
+tr:nth-child(even) td{
+  background:#f8fbff;
+}
+
+tr:last-child td{
+  border-bottom:none;
+}
+
+.etat{
+  color:#1f4fd8;
+  font-weight:900;
+  text-align:center;
+}
+
+.axokit{
+  color:#dc2626;
+  font-weight:900;
+  text-align:center;
+}
+
+.partner-etat{
+  color:#1f4fd8;
+  font-weight:900;
+}
+
+.partner-axokit{
+  color:#dc2626;
+  font-weight:900;
+}
+
+.note{
+  margin-top:14px;
+  padding:14px;
+  border-radius:12px;
+  background:linear-gradient(90deg, rgba(31,79,216,.08), rgba(22,163,74,.08));
+  border:1px solid rgba(31,79,216,.10);
+  color:#1e293b;
+  font-size:14px;
+  line-height:1.8;
+}
+
+.subtitle{
+  text-align:center;
+  font-size:14px;
+  color:var(--muted);
+  margin:-6px 0 16px;
+  line-height:1.8;
+}
+
+ul.clean{
+  margin:0 0 12px 18px;
+  padding:0;
+  line-height:1.8;
+}
+
+@media(max-width:768px){
+  header{
+    font-size:18px;
+    padding:18px 12px;
+  }
+
+  .wrap{
+    padding:10px;
+  }
+
+  .section{
+    padding:14px;
+  }
+
+  h2{
+    font-size:19px;
+  }
+
+  h3{
+    font-size:16px;
+  }
+
+  pre, p, li, td{
+    font-size:13px;
+  }
+
+  th{
+    font-size:12px;
+  }
+
+  table{
+    min-width:680px;
+  }
+}
+
+@media print{
+  .actions{display:none}
+  body{background:#fff}
+  .section{box-shadow:none}
+}
+</style>
+</head>
+
+<body>
+
+<header>PROJET : STATION IA SCIENTIFIQUE (OFFLINE)</header>
+
+<div class="wrap">
+
+  <div class="actions">
+    <button onclick="history.back()">⬅ Retour</button>
+    <button onclick="window.print()">📄 Télécharger PDF</button>
+  </div>
+
+  <div class="section frame">
+    <span class="blue">Budget public :</span> 0 €<br>
+    <span class="green">IA :</span> 100 % Offline<br>
+    <span class="orange">Principe :</span> Solidarité Privé → État → Public
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <h2>1. MODÈLE DE FINANCEMENT PAR SOLIDARITÉ TOTALE (PÉRÉQUATION)</h2>
+
+    <h3>A. Principe général</h3>
+
+    <pre>
+PROJET : STATION IA SCIENTIFIQUE (OFFLINE)
+Synthèse
+PROJET : STATION IA SCIENTIFIQUE (OFFLINE)
+
+Le projet repose sur un modèle de mécénat technologique croisé. L'investissement, l'équipement et le service logiciel du secteur public sont intégralement financés par l'activité générée auprès des établissements privés.
+
+<section style="padding: 30px; border-radius: 16px; background: #f7f9fc; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+  <h2 style="font-size: 28px; margin-bottom: 15px; color: #1d3557;">
+    Secteur Privé (Financeur)
+  </h2>
+  <p style="font-size: 17px; line-height: 1.8; color: #333;">
+    Les établissements privés souscrivent à une contribution de solidarité nationale.
+    En contrepartie, ils bénéficient gratuitement de l’accès à l’application web,
+    à condition de disposer déjà d’ordinateurs et d’une connexion Internet.
+  </p>
+  <p style="font-size: 17px; line-height: 1.8; color: #333;">
+    Leur contribution sert exclusivement à financer l’équipement matériel
+    des zones démunies.
+  </p>
+</section>
+
+Une partie de ces fonds est directement reversée à l’État pour financer l’équipement matériel du secteur public, tandis que l’autre partie est allouée à la société Axokit.
+    </pre>
+
+    <div class="italic">
+      « En contrepartie, la société fournit gracieusement le logiciel IA (maintenance et mode hors-ligne inclus). Quant au petit-déjeuner quotidien, l’État en assure le financement via ses bénéfices — qu’il alloue librement aux écoles publiques prioritaires — ainsi que la mise en œuvre via ses partenaires (ex: Bii). »
+    </div>
+
+    <h3>B. Bénéficiaires</h3>
+
+    <pre>
+• Secteur Public (Bénéficiaire intégral) : Pour les écoles publiques, le coût est de 0 €. Elles reçoivent gratuitement :
+o L'équipement matériel (ordinateurs puissants, écrans, mobilier).
+o La licence logicielle Axokit et ses mises à jour.
+o L'installation et le support technique.
+
+• Rôle de l'État : L'État agit uniquement comme pilote et régulateur. Il définit les priorités de déploiement (quelles écoles équiper en premier) sans jamais avoir à décaisser de budget ou faire d'avance de trésorerie.
+    </pre>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <h2>2. STRATÉGIE D'ÉQUIPEMENT ET MONTÉE EN PUISSANCE</h2>
+
+    <pre>
+Le déploiement dans le public est directement lié au rythme de signature dans le privé. C'est un modèle vertueux : plus le privé se modernise, plus le public s'équipe gratuitement.
+
+• Zéro Avance de Trésorerie : Ni pour l'État, ni pour la société.
+• Achat en Volume
+• Installation Clé en Main
+    </pre>
+
+    <h3>A. Détails techniques</h3>
+
+    <pre>
+Bleu
+Le modèle est conçu pour équiper progressivement les établissements, sans aucune avance de trésorerie de la part de l’état ou de la société.
+
+🖥️Part ÉTAT – Équipement matériel
+Note : Grâce aux achats en volume auprès de grossistes, 400 à 600 € permettent d’acquérir un ordinateur suffisamment puissant pour faire fonctionner l’IA localement.
+
+Part SOCIÉTÉ – Logiciel & installation
+
+ANNÉE 2 ET ANNÉES SUIVANTES – Service & Extension
+    </pre>
+
+    <div class="table-card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Année</th>
+              <th>Part É T A T (%) Écoles Publiques</th>
+              <th>Part A X O K I T (%)(Société)</th>
+              <th>Nb Ordis (600€)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Année 1</strong></td>
+              <td class="etat">40 %</td>
+              <td class="axokit">60 %</td>
+              <td>13 750</td>
+            </tr>
+            <tr>
+              <td><strong>Année 2</strong></td>
+              <td class="etat">50 %</td>
+              <td class="axokit">50 %</td>
+              <td>17 187</td>
+            </tr>
+            <tr>
+              <td><strong>Année 3</strong></td>
+              <td class="etat">60 %</td>
+              <td class="axokit">40 %</td>
+              <td>20 625</td>
+            </tr>
+            <tr>
+              <td><strong>Année 4</strong></td>
+              <td class="etat">70 %</td>
+              <td class="axokit">30 %</td>
+              <td>24 062</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <h2>3. POINTS CLÉS POUR L’ÉTAT</h2>
+
+    <table>
+      <tr><th>Avantages</th><th>Impact Ministère</th></tr>
+      <tr><td>Budget matériel</td><td>0 €</td></tr>
+      <tr><td>Budget logiciel</td><td>0 €</td></tr>
+      <tr><td>Risque financier</td><td>Nul</td></tr>
+      <tr><td>Équité sociale</td><td>Totale</td></tr>
+    </table>
+
+    <pre>
+Synthèse politique
+✔️ Aucun investissement initial
+✔️ IA 100 % offline
+✔️ Complément direct de l’enseignement
+    </pre>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <h2>4. FONCTIONNEMENT : BORNE DE SAVOIR</h2>
+
+    <pre>
+Optimisation : Un seul ordinateur suffit.
+Groupes de 3 élèves.
+Sessions réparties.
+Planning hebdomadaire.
+Libre-service.
+Auditorium avec vidéoprojecteur.
+    </pre>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section">
+    <h2>5. ARGUMENTS STRATÉGIQUES</h2>
+
+    <pre>
+Trajectoire de réussite
+Télétravail international
+Vision 2030
+Leapfrogging
+Souveraineté technologique
+Éducation 3.0
+Compétitivité mondiale
+    </pre>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section">
+    <div class="subtitle">
+      Projet Public : Station IA Scientifique (OFFLINE)<br>
+      IA 100% offline public — Coût logiciel secteur public : 0 €
+    </div>
+
+    <h2>Détails & Financement — Projet Public</h2>
+
+    <div class="table-card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Partenaire</th>
+              <th>Rôle Principal</th>
+              <th>Répartition Recettes (Année 1)</th>
+              <th>Évolution de la Répartition (Année 2 à 5)</th>
+              <th>Objectif Final (Fin Année 5)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="partner-etat">É T A T (Écoles Publiques)</td>
+              <td>Équipement, modernisation, mise à disposition des infrastructures et pilotage pédagogique.</td>
+              <td class="etat">40 %</td>
+              <td>Hausse constante : 50% (A2), 60% (A3), 70% (A4), 80% (A5).</td>
+              <td>Indépendance totale grâce au transfert de technologie.</td>
+            </tr>
+            <tr>
+              <td class="partner-axokit">A X O K I T (Société)</td>
+              <td>Fourniture Licence IA Offline, installation, maintenance technique et actions sociales (petits-déjeuners).</td>
+              <td class="axokit">60 %</td>
+              <td>Baisse progressive : 50% (A2), 40% (A3), 30% (A4), 20% (A5).</td>
+              <td>Transfert de technologie et retrait progressif de la gestion directe.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="note">
+      Ces financements proviennent exclusivement des abonnements des établissements privés.<br>
+      Les établissements publics bénéficient d’un accès totalement gratuit.
+    </p>
+
+    <p><strong>Architecture Nationale de Solidarité Éducative</strong></p>
+
+    <ul class="clean">
+      <li>Le privé finance, le public bénéficie : Investissement et actions sociales portés par Axokit.</li>
+      <li>Coût logiciel État : 0 € : Modernisation immédiate sans impact budgétaire.</li>
+      <li>Indépendance Souveraine : Solution 100 % offline avec transfert de technologie total.</li>
+      <li>Modèle Évolutif : Part des recettes pour l’État passant de 25 % à 80 % en 5 ans.</li>
+    </ul>
+
+    <p>
+      <strong>L'essentiel : L'État acquiert une autonomie totale et la majorité des revenus sans décaisser de frais de licence.</strong>
+    </p>
+  </div>
+
+  <div class="actions">
+    <a class="action-link" href="index.html">Retour à l’accueil</a>
+    <a class="action-link" href="lettre.html" style="background:#dc2626;">Lire la lettre de sollicitation</a>
+  </div>
+
+</div>
+</body>
+</html>

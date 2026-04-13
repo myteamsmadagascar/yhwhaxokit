@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pilotage National & Big Data Éducatif — AXOKIT</title>
+<meta name="theme-color" content="#dc2626">
+
+<style>
+:root{
+  --red:#dc2626;
+  --red2:#ef4444;
+  --dark:#0b1220;
+  --muted:#475569;
+  --muted2:#64748b;
+  --card:#ffffff;
+  --stroke:rgba(0,0,0,.08);
+  --shadow:0 20px 60px rgba(0,0,0,.12);
+  --radius:22px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  color:var(--dark);
+  background:
+    radial-gradient(900px 600px at 10% 10%, rgba(220,38,38,.12), transparent 55%),
+    radial-gradient(800px 500px at 90% 20%, rgba(239,68,68,.10), transparent 55%),
+    linear-gradient(180deg,#ffffff,#f7f7fb);
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed; inset:0;
+  background:
+    linear-gradient(to right, rgba(0,0,0,.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,.04) 1px, transparent 1px);
+  background-size:52px 52px;
+  opacity:.18;
+  pointer-events:none;
+  mask-image:radial-gradient(circle at 50% 20%, black, transparent 70%);
+}
+
+.container{max-width:1120px;margin:auto;padding:18px 16px 78px;position:relative}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes glow{50%{filter:drop-shadow(0 0 22px rgba(239,68,68,.35))}}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+/* Topbar */
+.topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px;
+  padding:10px 0 8px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  backdrop-filter:blur(10px);
+}
+.topbar:before{
+  content:"";
+  position:absolute; left:-16px; right:-16px; top:0; bottom:0;
+  background:rgba(255,255,255,.72);
+  border-bottom:1px solid rgba(0,0,0,.06);
+  z-index:-1;
+}
+
+.brand{
+  display:flex; align-items:center; gap:12px;
+  text-decoration:none;
+  padding:6px 8px;
+  border-radius:16px;
+}
+.brand:hover{background:rgba(220,38,38,.05)}
+.logo{
+  height:44px;
+  width:auto;
+  animation:glow 2.8s ease-in-out infinite;
+}
+.brandText{
+  text-align:left;
+  line-height:1.1;
+}
+.brandText b{display:block;font-size:14px;letter-spacing:.3px}
+.brandText span{font-size:12px;color:var(--muted)}
+.nav{
+  display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+}
+.nav a{
+  text-decoration:none;
+  font-weight:900;
+  font-size:12px;
+  color:rgba(11,18,32,.86);
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.07);
+  background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.6));
+  box-shadow:0 10px 28px rgba(0,0,0,.06);
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.nav a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 40px rgba(220,38,38,.14);
+  background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,245,245,.75));
+}
+.nav a.primary{
+  color:#fff;
+  border:1px solid rgba(220,38,38,.28);
+  background:linear-gradient(90deg, var(--red), var(--red2));
+  box-shadow:0 18px 45px rgba(220,38,38,.20);
+}
+
+/* Hero */
+.hero{
+  margin-top:14px;
+  border-radius:28px;
+  border:1px solid rgba(0,0,0,.07);
+  background:
+    radial-gradient(900px 420px at 15% 10%, rgba(239,68,68,.16), transparent 58%),
+    radial-gradient(900px 420px at 85% 10%, rgba(220,38,38,.12), transparent 58%),
+    linear-gradient(180deg,#ffffff,#fff7f7);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  position:relative;
+  animation:fadeUp .85s ease both;
+}
+.hero:after{
+  content:"";
+  position:absolute; inset:-2px;
+  background:radial-gradient(circle at 50% 10%, rgba(239,68,68,.22), transparent 65%);
+  filter:blur(26px);
+  opacity:.75;
+  pointer-events:none;
+}
+.heroInner{
+  position:relative;
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap:18px;
+  padding:28px 22px;
+}
+@media (max-width:900px){
+  .heroInner{grid-template-columns:1fr}
+  .nav{justify-content:flex-start}
+}
+
+.badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 14px;
+  border-radius:999px;
+  font-weight:1000;
+  font-size:12px;
+  letter-spacing:.25px;
+  border:1px solid rgba(220,38,38,.18);
+  background:linear-gradient(90deg, rgba(220,38,38,.12), rgba(239,68,68,.10));
+  color:rgba(11,18,32,.92);
+  width:fit-content;
+}
+.badge i{
+  width:10px;height:10px;border-radius:50%;
+  background:linear-gradient(180deg, var(--red), var(--red2));
+  box-shadow:0 0 18px rgba(239,68,68,.28);
+  display:inline-block;
+  animation:glow 2.6s ease-in-out infinite;
+}
+
+h1{
+  margin:12px 0 10px;
+  font-size:38px;
+  line-height:1.06;
+  letter-spacing:-.6px;
+  color:#0b1220;
+}
+@media (max-width:520px){h1{font-size:30px}}
+.lead{
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.75;
+}
+
+.heroActions{
+  display:flex; gap:10px; flex-wrap:wrap;
+  margin-top:16px;
+}
+
+.btn{
+  cursor:pointer;
+  border:none;
+  padding:12px 14px;
+  border-radius:14px;
+  font-weight:950;
+  letter-spacing:.2px;
+  font-size:13px;
+  display:inline-flex;align-items:center;gap:10px;
+  text-decoration:none;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  animation:fadeUp .9s ease both;
+}
+.btn:active{transform:scale(.98)}
+.btnPrimary{
+  color:#fff;
+  background:linear-gradient(90deg, var(--red), var(--red2));
+  box-shadow:0 18px 45px rgba(220,38,38,.22);
+}
+.btnGhost{
+  color:rgba(11,18,32,.92);
+  background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.70));
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 12px 30px rgba(0,0,0,.06);
+}
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 46px rgba(220,38,38,.16);
+}
+.btn small{opacity:.85;font-weight:900}
+
+/* Panel */
+.panel{
+  border-radius:22px;
+  border:1px solid rgba(0,0,0,.07);
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,245,245,.65));
+  padding:16px 14px;
+  box-shadow:0 18px 50px rgba(0,0,0,.08);
+  animation:fadeUp .95s ease both;
+  animation-delay:.05s;
+}
+.panel h3{
+  margin:2px 0 10px;
+  font-size:14px;
+  letter-spacing:.35px;
+  color:rgba(11,18,32,.92);
+}
+.kpis{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.kpi{
+  border-radius:18px;
+  border:1px solid rgba(0,0,0,.07);
+  background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,245,245,.72));
+  padding:12px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.kpi:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 45px rgba(220,38,38,.16);
+}
+.kpi b{display:block;font-size:16px}
+.kpi span{display:block;font-size:12px;color:var(--muted2);margin-top:3px}
+.kpi .tag{
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:8px;
+  font-size:11px;
+  font-weight:900;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(220,38,38,.18);
+  background:rgba(220,38,38,.06);
+  color:rgba(11,18,32,.78);
+}
+.kpi .tag i{
+  width:8px;height:8px;border-radius:50%;
+  background:linear-gradient(180deg,var(--red),var(--red2));
+}
+
+.panel p{
+  margin:12px 2px 0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+}
+
+/* Sections */
+.section{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+.cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:14px;
+}
+@media (max-width:900px){.cards{grid-template-columns:1fr}}
+
+.card{
+  border-radius:var(--radius);
+  border:1px solid rgba(0,0,0,.07);
+  background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,245,245,.70));
+  box-shadow:0 18px 55px rgba(0,0,0,.08);
+  overflow:hidden;
+  animation:fadeUp .95s ease both;
+}
+.card:nth-child(1){animation-delay:.08s}
+.card:nth-child(2){animation-delay:.16s}
+
+.cardHead{
+  padding:16px 16px 12px;
+  display:flex; gap:12px; align-items:flex-start;
+}
+.icon{
+  flex:0 0 44px;
+  width:44px;height:44px;border-radius:14px;
+  border:1px solid rgba(220,38,38,.16);
+  background:
+    radial-gradient(18px 18px at 30% 30%, rgba(239,68,68,.24), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,245,245,.65));
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 16px 40px rgba(0,0,0,.08);
+}
+.icon svg{width:22px;height:22px;opacity:.92}
+.cardHead h2{
+  margin:0;
+  font-size:16px;
+  letter-spacing:.2px;
+  color:#0b1220;
+}
+.cardHead p{
+  margin:6px 0 0;
+  color:var(--muted);
+  line-height:1.7;
+  font-size:13px;
+}
+
+.cardBody{
+  padding:0 16px 16px;
+  color:rgba(11,18,32,.92);
+}
+
+ul{
+  margin:10px 0 0 18px;
+  padding:0;
+  color:rgba(11,18,32,.88);
+}
+li{margin:8px 0; line-height:1.65; color:rgba(11,18,32,.86)}
+li b{color:#0b1220}
+.hr{
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(0,0,0,.10), transparent);
+  margin:10px 0 12px;
+}
+
+/* Callout */
+.callout{
+  margin-top:16px;
+  border-radius:26px;
+  border:1px solid rgba(0,0,0,.07);
+  background:
+    radial-gradient(700px 260px at 15% 15%, rgba(239,68,68,.14), transparent 55%),
+    radial-gradient(650px 260px at 85% 15%, rgba(220,38,38,.10), transparent 55%),
+    linear-gradient(180deg,#ffffff,#fff7f7);
+  box-shadow:var(--shadow);
+  padding:18px 18px 16px;
+  animation:fadeUp 1.05s ease both;
+  animation-delay:.22s;
+}
+.callout h2{margin:0 0 6px;font-size:16px;color:#0b1220}
+.callout p{margin:0;color:var(--muted);line-height:1.75;font-size:13px}
+.calloutGrid{
+  margin-top:12px;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+}
+@media (max-width:900px){.calloutGrid{grid-template-columns:1fr}}
+.mini{
+  border-radius:18px;
+  border:1px solid rgba(0,0,0,.07);
+  background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,245,245,.72));
+  padding:12px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.mini:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 45px rgba(220,38,38,.14);
+}
+.mini b{display:block;margin-bottom:4px;color:#0b1220}
+.mini span{display:block;color:var(--muted2);font-size:12px;line-height:1.65}
+
+/* Modal */
+.modal{
+  position:fixed; inset:0;
+  display:none;
+  align-items:center; justify-content:center;
+  padding:16px;
+  background:rgba(2,6,23,.35);
+  backdrop-filter:blur(10px);
+  z-index:50;
+}
+.modal.show{display:flex}
+.modalCard{
+  width:min(920px, 100%);
+  border-radius:26px;
+  border:1px solid rgba(0,0,0,.08);
+  background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,245,245,.82));
+  box-shadow:0 30px 100px rgba(0,0,0,.25);
+  overflow:hidden;
+  animation:fadeUp .35s ease both;
+}
+.modalTop{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px;
+  padding:14px 14px 12px;
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.modalTop b{font-size:13px;letter-spacing:.3px;color:#0b1220}
+.close{
+  border:1px solid rgba(0,0,0,.10);
+  background:rgba(255,255,255,.75);
+  color:rgba(11,18,32,.92);
+  padding:8px 10px;
+  border-radius:12px;
+  font-weight:900;
+  cursor:pointer;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.close:hover{
+  transform:translateY(-1px);
+  box-shadow:0 16px 40px rgba(220,38,38,.14);
+}
+.modalBody{padding:14px}
+.grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+@media (max-width:900px){.grid2{grid-template-columns:1fr}}
+.flow{
+  border-radius:20px;
+  border:1px solid rgba(0,0,0,.07);
+  background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,245,245,.78));
+  padding:12px;
+}
+.flow h3{margin:0 0 10px;font-size:14px;color:var(--red)}
+.step{
+  display:flex; gap:10px; align-items:flex-start;
+  margin:10px 0;
+}
+.num{
+  width:30px;height:30px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:1000;
+  border:1px solid rgba(220,38,38,.18);
+  background:linear-gradient(180deg, rgba(220,38,38,.12), rgba(239,68,68,.10));
+  color:#0b1220;
+}
+.step p{margin:0;color:var(--muted);font-size:13px;line-height:1.7}
+.note{
+  margin-top:10px;
+  padding:10px 12px;
+  border-radius:16px;
+  border:1px dashed rgba(220,38,38,.22);
+  color:rgba(11,18,32,.86);
+  background:rgba(220,38,38,.06);
+  font-size:12px;
+  line-height:1.7;
+}
+
+.footer{
+  margin-top:18px;
+  text-align:center;
+  color:rgba(100,116,139,.9);
+  font-size:12px;
+}
+
+kbd{
+  font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size:11px;
+  padding:2px 6px;
+  border-radius:8px;
+  border:1px solid rgba(0,0,0,.08);
+  background:rgba(255,255,255,.72);
+}
+
+/* small helper */
+.noteLink{color:var(--red);font-weight:900;text-decoration:none}
+.noteLink:hover{text-decoration:underline}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <!-- ✅ Accueil -->
+    <a class="brand" href="index.html" title="Revenir à l'accueil">
+      <!-- ✅ LOGO : remplace le fichier si besoin -->
+      <img class="logo" src="logoaxokit.png" alt="Axokit">
+      <div class="brandText">
+        <b>AXOKIT</b>
+        <span>Pilotage national • Big Data éducatif</span>
+      </div>
+    </a>
+
+    <!-- ✅ NAV -->
+    <nav class="nav" aria-label="Navigation">
+      <a href="index.html">Revenir à l'accueil</a>
+      <a class="primary" href="projet.html">Voir détails et financement</a>
+      <a href="comprendre.html">Lire la présentation</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="heroInner">
+      <div>
+        <div class="badge"><i></i> PILOTAGE NATIONAL & BIG DATA ÉDUCATIF</div>
+        <h1>La fin du papier,<br>l'ère de la décision par la donnée.</h1>
+
+        <p class="lead">
+          L'application Axokit transcende sa fonction de tuteur pour devenir le moteur de la digitalisation du système scolaire malgache.
+          Elle centralise, sans aucun support papier, les performances de chaque élève pour offrir au Ministère une vision claire et instantanée du niveau national.
+        </p>
+
+        <div class="heroActions">
+          <a class="btn btnPrimary" href="#details" onclick="openModal(event)">
+            Voir le flux Zéro Papier <small>• Schéma</small>
+          </a>
+          <a class="btn btnGhost" href="#benefices">
+            Bénéfices État : Public vs Privé <small>• Comparaison</small>
+          </a>
+        </div>
+
+        <div class="footer" style="margin-top:14px">
+          Astuce : cliquez sur <kbd>Voir le flux Zéro Papier</kbd> pour la présentation commerciale.
+        </div>
+      </div>
+
+      <aside class="panel" id="benefices">
+        <h3>Ce que le Ministère obtient immédiatement</h3>
+
+        <div class="kpis">
+          <div class="kpi">
+            <b>Vision nationale</b>
+            <span>Niveau réel par région, établissement, classe.</span>
+            <div class="tag"><i></i> Instantané</div>
+          </div>
+
+          <div class="kpi">
+            <b>Public vs Privé</b>
+            <span>Comparaison en temps réel.</span>
+            <div class="tag"><i></i> Harmonisation</div>
+          </div>
+
+          <div class="kpi">
+            <b>Zéro papier</b>
+            <span>Plus aucun formulaire manuscrit.</span>
+            <div class="tag"><i></i> Dématérialisé</div>
+          </div>
+
+          <div class="kpi">
+            <b>Détection proactive</b>
+            <span>Besoins de renforcement scolaire.</span>
+            <div class="tag"><i></i> Prévention</div>
+          </div>
+        </div>
+
+        <p>
+          Axokit digitalise 100% des notes et des parcours d'apprentissage de chaque élève (Public & Privé).
+          Ce flux de données constant remplace les rapports papier, permettant au Ministère un pilotage stratégique de précision
+          et une détection proactive des besoins de renforcement scolaire.
+        </p>
+
+        <div class="note" style="margin-top:12px">
+          Liens rapides : <a class="noteLink" href="projet.html">Voir détails et financement</a> •
+          <a class="noteLink" href="comprendre.html">Lire la présentation</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="section">
+
+    <div class="cards">
+      <!-- 1 -->
+      <article class="card">
+        <div class="cardHead">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3c4.42 0 8 1.34 8 3s-3.58 3-8 3-8-1.34-8-3 3.58-3 8-3Z" stroke="black" stroke-width="1.6" opacity=".85"/>
+              <path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6" stroke="black" stroke-width="1.6" opacity=".65"/>
+              <path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" stroke="black" stroke-width="1.6" opacity=".55"/>
+            </svg>
+          </div>
+          <div>
+            <h2>1. UNE BASE DE DONNÉES NATIONALE EXHAUSTIVE</h2>
+            <p>Axokit unifie le suivi pédagogique des collèges et lycées publics et privés au sein d'une interface unique.</p>
+          </div>
+        </div>
+
+        <div class="cardBody">
+          <div class="hr"></div>
+          <ul>
+            <li><b>Traçabilité Totale :</b> Chaque note obtenue par chaque élève, dans chaque matière (Maths, Physique, Chimie), est numérisée à la source.</li>
+          </ul>
+          <div class="hr"></div>
+          <ul>
+            <li><b>Bénéfice État :</b> Une comparaison en temps réel "Public vs Privé" pour harmoniser les standards d'excellence et anticiper les résultats aux examens nationaux.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="card">
+        <div class="cardHead">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M20 6v6h-6" stroke="black" stroke-width="1.6" opacity=".8"/>
+              <path d="M4 18v-6h6" stroke="black" stroke-width="1.6" opacity=".8"/>
+              <path d="M20 12a8 8 0 0 0-14.9-3" stroke="black" stroke-width="1.6" opacity=".6"/>
+              <path d="M4 12a8 8 0 0 0 14.9 3" stroke="black" stroke-width="1.6" opacity=".6"/>
+            </svg>
+          </div>
+          <div>
+            <h2>2. DISPOSITIF DE TRANSFERT : LE "ZÉRO PAPIER" CONNECTÉ</h2>
+            <p>
+              Pour garantir la remontée d'informations depuis des zones sans Internet, Axokit utilise des protocoles de synchronisation hybride.
+              Plus aucun formulaire manuscrit n'est nécessaire.
+            </p>
+          </div>
+        </div>
+
+        <div class="cardBody">
+          <div class="hr"></div>
+          <p style="margin:0 0 10px;color:var(--muted);font-weight:900">Option A : Le Relais Smartphone (Flux dématérialisé)</p>
+          <ul>
+            <li><b>Étape 1 :</b> L'enseignant synchronise son téléphone avec la Station Axokit via un Wi-Fi local gratuit (réseau interne sans data).</li>
+            <li><b>Par Câble USB (Liaison directe) :</b> Pour une fiabilité maximale, l'enseignant branche simplement son smartphone à la station via un câble USB. Le transfert se fait instantanément, comme pour une copie de fichiers classique, tout en rechargeant le téléphone.</li>
+            <li><b>Étape 2 :</b> Dès que le smartphone capte du réseau (ville, domicile, 4G), les données cryptées sont envoyées automatiquement au Ministère.</li>
+            <li><b>L'avantage :</b> Rapidité absolue, coût logistique nul.</li>
+          </ul>
+
+          <div class="hr"></div>
+          <p style="margin:0 0 10px;color:var(--muted);font-weight:900">Option B : La Passerelle USB (Flux sécurisé)</p>
+          <ul>
+            <li><b>Étape 1 :</b> Le responsable de l'école extrait les rapports numériques sur une clé USB.</li>
+            <li><b>Étape 2 :</b> Lors d'un passage en zone connectée (Cybercafé, Direction Régionale), les fichiers sont déposés sur le portail sécurisé Axokit.</li>
+            <li><b>L'avantage :</b> Fiabilité totale pour les zones les plus isolées.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <section class="callout">
+      <h2>Conclusion</h2>
+      <p>
+        Axokit digitalise 100% des notes et des parcours d'apprentissage de chaque élève (Public & Privé).
+        Ce flux de données constant remplace les rapports papier, permettant au Ministère un pilotage stratégique de précision
+        et une détection proactive des besoins de renforcement scolaire.
+      </p>
+    </section>
+
+  </div>
+
+  <div class="footer">
+    © AXOKIT — Pilotage National & Big Data Éducatif •
+    <a class="noteLink" href="index.html">Accueil</a> •
+    <a class="noteLink" href="projet.html">Voir détails et financement</a> •
+    <a class="noteLink" href="comprendre.html">Lire la présentation</a>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="details" role="dialog" aria-modal="true" aria-label="Flux Zéro Papier">
+  <div class="modalCard">
+    <div class="modalTop">
+      <b>Présentation commerciale — Flux “Zéro Papier” (zones connectées & isolées)</b>
+      <button class="close" onclick="closeModal()">Fermer ✕</button>
+    </div>
+
+    <div class="modalBody">
+      <div class="grid2">
+        <div class="flow">
+          <h3>Option A : Le Relais Smartphone (Flux dématérialisé)</h3>
+
+          <div class="step">
+            <div class="num">1</div>
+            <p><b>Étape 1 :</b> L'enseignant synchronise son téléphone avec la Station Axokit via un Wi-Fi local gratuit (réseau interne sans data).</p>
+          </div>
+
+          <div class="step">
+            <div class="num">USB</div>
+            <p><b>Par Câble USB (Liaison directe) :</b> Pour une fiabilité maximale, l'enseignant branche simplement son smartphone à la station via un câble USB. Le transfert se fait instantanément, comme pour une copie de fichiers classique, tout en rechargeant le téléphone.</p>
+          </div>
+
+          <div class="step">
+            <div class="num">2</div>
+            <p><b>Étape 2 :</b> Dès que le smartphone capte du réseau (ville, domicile, 4G), les données cryptées sont envoyées automatiquement au Ministère.</p>
+          </div>
+
+          <div class="note"><b>L'avantage :</b> Rapidité absolue, coût logistique nul.</div>
+        </div>
+
+        <div class="flow">
+          <h3>Option B : La Passerelle USB (Flux sécurisé)</h3>
+
+          <div class="step">
+            <div class="num">1</div>
+            <p><b>Étape 1 :</b> Le responsable de l'école extrait les rapports numériques sur une clé USB.</p>
+          </div>
+
+          <div class="step">
+            <div class="num">2</div>
+            <p><b>Étape 2 :</b> Lors d'un passage en zone connectée (Cybercafé, Direction Régionale), les fichiers sont déposés sur le portail sécurisé Axokit.</p>
+          </div>
+
+          <div class="note"><b>L'avantage :</b> Fiabilité totale pour les zones les plus isolées.</div>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:12px">
+        Axokit digitalise 100% des notes et des parcours d'apprentissage de chaque élève (Public & Privé).
+        Ce flux de données constant remplace les rapports papier, permettant au Ministère un pilotage stratégique de précision
+        et une détection proactive des besoins de renforcement scolaire.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(e){
+  if(e) e.preventDefault();
+  document.getElementById('details').classList.add('show');
+}
+function closeModal(){
+  document.getElementById('details').classList.remove('show');
+}
+document.addEventListener('keydown', (ev)=>{
+  if(ev.key === "Escape") closeModal();
+});
+document.getElementById('details').addEventListener('click', (e)=>{
+  if(e.target.id === 'details') closeModal();
+});
+</script>
+
+</body>
+</html>

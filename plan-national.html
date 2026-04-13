@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Plan National — Station IA Scientifique</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+:root{
+--blue:#2563eb;
+--gold:#d4af37;
+--green:#16a34a;
+--red:#c1121f;
+--bg:#f4f7ff;
+--card:#fff;
+--stroke:#dbe2ff;
+--r:22px;
+}
+
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Poppins,system-ui;
+background:var(--bg);
+color:#0b1220;
+}
+
+.wrap{max-width:1100px;margin:auto;padding:14px}
+
+.top{
+display:flex;justify-content:flex-end;gap:10px;margin-bottom:12px
+}
+
+.btn{
+padding:10px 16px;border-radius:14px;border:1px solid var(--stroke);
+background:white;font-weight:900;cursor:pointer
+}
+.btn-red{background:linear-gradient(135deg,#c1121f,#ff3b3b);color:white}
+
+.card{
+background:var(--card);
+border-radius:var(--r);
+border:1px solid var(--stroke);
+box-shadow:0 20px 60px rgba(0,0,0,.08);
+overflow:hidden;
+}
+
+.hero{
+display:flex;gap:14px;align-items:center;
+padding:18px;border-bottom:1px solid var(--stroke)
+}
+.logo{width:64px;height:64px;background:white;border-radius:14px;display:flex;align-items:center;justify-content:center}
+.logo img{max-width:100%}
+
+h1{margin:0;color:var(--red)}
+.sub{font-weight:700;color:#444}
+
+.badge{
+margin-top:6px;
+display:inline-block;
+background:linear-gradient(135deg,#16a34a,#4ade80);
+padding:6px 14px;
+border-radius:999px;
+font-size:12px;
+font-weight:900;
+}
+
+.section{
+padding:16px;
+border-bottom:1px solid var(--stroke)
+}
+.section:last-child{border-bottom:0}
+
+h2{margin:0 0 10px;color:var(--blue)}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:12px
+}
+
+.box{
+border:1px solid var(--stroke);
+border-radius:16px;
+padding:12px;
+text-align:center;
+font-weight:800
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px
+}
+th,td{
+border:1px solid #ccd4ff;
+padding:8px;
+text-align:center
+}
+th{background:#eef2ff}
+
+.quote{
+margin-top:10px;
+padding:12px;
+background:#fff8e6;
+border-left:5px solid var(--gold);
+font-weight:800
+}
+
+.phase{
+border:1px solid var(--stroke);
+border-radius:16px;
+padding:12px;
+margin-bottom:10px
+}
+
+footer{
+text-align:center;
+padding:14px;
+font-weight:800;
+color:#666
+}
+
+@media(max-width:700px){
+.hero{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<div class="top">
+<button class="btn btn-red" onclick="downloadPDF()">Télécharger PDF</button>
+</div>
+
+<div class="card" id="pdf">
+
+<div class="hero">
+<div class="logo"><img src="logoaxokit.png"></div>
+<div>
+<h1>PLAN NATIONAL — STATION IA SCIENTIFIQUE</h1>
+<div class="sub">Mathématiques • Physique • Chimie</div>
+</div>
+</div>
+
+<div class="section">
+<h2>Revenus annuels (fourchette basse)</h2>
+
+<table>
+<tr><th>Établissements</th><th>Revenus</th><th>25% matériel</th></tr>
+<tr><td>Collèges privés</td><td>26,325 M€</td><td>6,58 M€</td></tr>
+<tr><td>Lycées privés</td><td>33,045 M€</td><td>8,26 M€</td></tr>
+<tr><td><b>Total</b></td><td><b>59,37 M€</b></td><td><b>14,84 M€</b></td></tr>
+</table>
+
+<div class="quote">
+Coût unitaire ordinateur : 650 € (achat en volume)
+</div>
+</div>
+
+<div class="section">
+<h2>Nombre d’ordinateurs finançables / an</h2>
+
+<table>
+<tr><th>Niveau</th><th>Budget</th><th>PC</th></tr>
+<tr><td>Collèges</td><td>6,58 M€</td><td>≈ 10 100</td></tr>
+<tr><td>Lycées</td><td>8,26 M€</td><td>≈ 12 700</td></tr>
+<tr><td><b>Total</b></td><td><b>14,84 M€</b></td><td><b>≈ 22 800</b></td></tr>
+</table>
+
+<div class="quote">
+Sans subvention externe. Sans dette. Auto-financé.
+</div>
+<div class="badge">Financé par Axokit (en autofinancement)</div>
+</div>
+
+<div class="section">
+<h2>Plan de déploiement logistique</h2>
+
+<div class="phase">
+<b>PHASE 1 — Pilotage national</b><br>
+2 000 PC • 400–500 écoles • 120 000 élèves • 3–4 mois
+</div>
+
+<div class="phase">
+<b>PHASE 2 — Déploiement régional</b><br>
+5 000 PC • cumul 7 000 • grandes villes
+</div>
+
+<div class="phase">
+<b>PHASE 3 — Massification</b><br>
+10 000 PC • cumul 17 000 • 50–60% couverture
+</div>
+
+<div class="phase">
+<b>PHASE 4 — Rythme de croisière</b><br>
+≈ 22 000 PC/an • couverture nationale
+</div>
+
+</div>
+
+<div class="section">
+<h2>Lecture stratégique</h2>
+
+<div class="grid">
+<div class="box">25 % du chiffre suffit</div>
+<div class="box">Zéro financement extérieur</div>
+<div class="box">Montée progressive maîtrisée</div>
+<div class="box">≈ 70 000 PC en 3–4 ans</div>
+</div>
+
+<div class="quote">
+« En affectant seulement 25 % des revenus à l’équipement, le système permet de financer plus de 22 000 ordinateurs par an, avec une montée en puissance progressive et maîtrisée. »
+</div>
+
+</div>
+
+<footer>
+Axokit — Station IA Scientifique • Souveraineté technologique
+</footer>
+
+</div>
+</div>
+
+<script>
+function downloadPDF(){
+html2pdf().set({
+filename:'Plan_National_StationIA.pdf',
+html2canvas:{scale:2},
+jsPDF:{format:'a4'}
+}).from(document.getElementById('pdf')).save();
+}
+</script>
+
+</body>
+</html>

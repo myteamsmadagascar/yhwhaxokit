@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Petit-Déjeuner de la Réussite — Axokit</title>
+
+<style>
+body{
+margin:0;
+font-family:system-ui,Segoe UI,Arial;
+background:#f4f7fb;
+color:#0b1220;
+}
+
+.container{max-width:1100px;margin:auto;padding:20px}
+
+.bii{color:#ff2d55;font-weight:900}
+
+header{
+background:white;
+border-radius:22px;
+padding:22px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
+.logo{height:55px}
+
+.actions{display:flex;gap:12px}
+
+.btn{
+padding:10px 18px;
+border-radius:12px;
+font-weight:800;
+text-decoration:none;
+border:1px solid #ccc;
+background:white;
+color:#0b1220;
+}
+
+.primary{background:#1f4fd8;color:white;border:none}
+.secondary{background:#eaf0ff;border:none}
+
+.hero h1{margin:14px 0 4px;font-size:30px;font-weight:900}
+.hero p{margin:0;color:#555;font-weight:700}
+
+.slider{
+margin-top:20px;
+height:360px;
+border-radius:18px;
+overflow:hidden;
+background:#dde5ff;
+position:relative;
+}
+
+.slides{display:flex;height:100%;transition:.6s}
+.slide{min-width:100%;display:flex;justify-content:center;align-items:center}
+.slide img{max-width:100%;max-height:100%;object-fit:contain}
+
+.arrow{
+position:absolute;top:50%;transform:translateY(-50%);
+width:44px;height:44px;border-radius:14px;
+background:rgba(0,0,0,.4);color:white;
+display:grid;place-items:center;cursor:pointer;font-size:22px;
+}
+.left{left:10px}.right{right:10px}
+
+.block{
+margin-top:22px;
+padding:22px;
+border-radius:22px;
+background:linear-gradient(135deg,#eef3ff,#ffffff);
+box-shadow:0 12px 30px rgba(0,0,0,.06);
+border:1px solid #dfe6ff;
+}
+
+.block h3{
+margin-top:0;
+display:flex;
+align-items:center;
+gap:10px;
+color:#1f4fd8;
+}
+
+.num{
+background:#1f4fd8;
+color:white;
+width:32px;height:32px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:900;
+}
+
+.block ul li{
+background:white;
+padding:10px 12px;
+border-radius:12px;
+margin:10px 0;
+box-shadow:0 4px 12px rgba(0,0,0,.05);
+font-weight:700;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:12px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:10px;
+font-weight:800;
+}
+
+th{background:#eef3ff}
+
+footer{text-align:center;margin:30px;color:#777;font-weight:800}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<div class="top">
+<img src="logoaxokit.png" class="logo">
+<div class="actions">
+<a href="comprendre.html" class="btn secondary">Comprendre l’offre de partenariat</a>
+<a href="contact.html" class="btn primary">Répondre à Axokit</a>
+</div>
+</div>
+
+<div class="hero">
+<h1>Petit-Déjeuner de la Réussite</h1>
+<p>Proposition étatique — Axokit + <span class="bii">Bii</span></p>
+</div>
+
+<div class="slider">
+<div class="slides" id="slides">
+<div class="slide"><img src="resto.png"></div>
+<div class="slide"><img src="aliment.png"></div>
+<div class="slide"><img src="axokitaide.png"></div>
+</div>
+<div class="arrow left" onclick="move(-1)">‹</div>
+<div class="arrow right" onclick="move(1)">›</div>
+</div>
+
+</header>
+
+<div class="block">
+<section>
+  <h2>Nutrition scolaire et réussite éducative</h2>
+  <p>
+    Afin de lever le frein de la faim sur l’apprentissage, nous proposons à l’État
+    d’utiliser notre plateforme pour orienter directement une part de ses redevances
+    vers un partenaire social.
+  </p>
+  <p>
+    Ce mécanisme permettra de financer l’opérateur Bii, ou toute autre structure
+    désignée par l’État, afin de garantir aux élèves un accès régulier aux repas,
+    condition essentielle de leur concentration, de leur assiduité et de leur réussite.
+  </p>
+</section>
+
+<div class="block">
+<h3><span class="num">2</span>Le Boost massif pour <span class="bii">Bii</span></h3>
+
+<p>Aujourd'hui, <span class="bii">Bii</span> fait un travail admirable mais limité par manque de moyens.</p>
+
+<ul>
+<li>Capacité de Collecte Totale : camions + coursiers dans les 100 magasins chaque matin.</li>
+<li>Fin des pertes : unité de transformation 400 000 € pour jus et compotes.</li>
+<li>Sécurité Totale : frigos solaires dans chaque école.</li>
+</ul>
+</div>
+
+<div class="block">
+<h3><span class="num">3</span>L’Impact : Nourrir les enfants AVANT la classe</h3>
+
+<ul>
+<li>Collecte la veille : lait, fruits, boulangerie.</li>
+<li>Petit-déjeuner chaque matin avant les cours.</li>
+<li>73 000 enfants – 14,6 millions de petits-déjeuners/an.</li>
+</ul>
+</div>
+
+<div class="block">
+<h3><span class="num">4</span>Pourquoi gagnant-gagnant ?</h3>
+
+<table>
+<tr><th>État</th><th>Enfants & <span class="bii">Bii</span></th></tr>
+<tr><td>Zéro budget public</td><td>Énergie pour apprendre</td></tr>
+<tr><td>Lutte gaspillage</td><td>Moyens d’agir nationaux</td></tr>
+<tr><td>Preuve par donnée</td><td>Financement pérenne</td></tr>
+</table>
+</div>
+
+<div class="block">
+<h3>Conclusion</h3>
+
+<ul>
+<li><span class="bii">Bii</span> bras nutritionnel</li>
+<li>L’État protecteur des enfants</li>
+<li>Axokit moteur numérique transparent</li>
+</ul>
+</div>
+<div class="block" style="background:linear-gradient(135deg,#0ea5e9,#22c55e);color:white">
+<p style="font-size:16px;font-weight:800;line-height:1.5;margin:0">
+“Nous ne prétendons pas remplacer l'aide budgétaire de pays étranger.  
+Nous apportons simplement une solution technique de proximité.  
+Là où les grands pays gèrent la macro-économie, nous gérons la réalité de l'assiette.  
+Nous ne sommes pas des géants de la philanthropie, nous sommes des ingénieurs de la solidarité.”
+</p>
+</div>
+<footer>
+Axokit — Petit-Déjeuner de la Réussite
+</footer>
+
+</div>
+
+<script>
+let i=0;
+function move(n){
+const s=document.getElementById("slides");
+i=(i+n+3)%3;
+s.style.transform="translateX(-"+(i*100)+"%)";
+}
+setInterval(()=>move(1),4000);
+</script>
+
+</body>
+</html>
