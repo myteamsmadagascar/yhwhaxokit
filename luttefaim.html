@@ -1,239 +1,448 @@
+
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Petit-Déjeuner de la Réussite — Axokit</title>
 
-<title>Petit-Déjeuner de la Réussite — Axokit</title>
+  <style>
+    *{
+      box-sizing:border-box;
+    }
 
-<style>
-body{
-margin:0;
-font-family:system-ui,Segoe UI,Arial;
-background:#f4f7fb;
-color:#0b1220;
-}
+    body{
+      margin:0;
+      font-family:system-ui,Segoe UI,Arial,sans-serif;
+      background:#f4f7fb;
+      color:#0b1220;
+    }
 
-.container{max-width:1100px;margin:auto;padding:20px}
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:16px;
+    }
 
-.bii{color:#ff2d55;font-weight:900}
+    .bii{
+      color:#ff2d55;
+      font-weight:900;
+    }
 
-header{
-background:white;
-border-radius:22px;
-padding:22px;
-box-shadow:0 15px 40px rgba(0,0,0,.08);
-}
+    header{
+      background:white;
+      border-radius:22px;
+      padding:20px;
+      box-shadow:0 15px 40px rgba(0,0,0,.08);
+    }
 
-.top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
-.logo{height:55px}
+    .top{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:center;
+    }
 
-.actions{display:flex;gap:12px}
+    .logo{
+      height:55px;
+      max-width:100%;
+      object-fit:contain;
+    }
 
-.btn{
-padding:10px 18px;
-border-radius:12px;
-font-weight:800;
-text-decoration:none;
-border:1px solid #ccc;
-background:white;
-color:#0b1220;
-}
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
 
-.primary{background:#1f4fd8;color:white;border:none}
-.secondary{background:#eaf0ff;border:none}
+    .btn{
+      padding:10px 16px;
+      border-radius:12px;
+      font-weight:800;
+      text-decoration:none;
+      border:1px solid #ccd4e0;
+      background:white;
+      color:#0b1220;
+      display:inline-block;
+      text-align:center;
+    }
 
-.hero h1{margin:14px 0 4px;font-size:30px;font-weight:900}
-.hero p{margin:0;color:#555;font-weight:700}
+    .primary{
+      background:#1f4fd8;
+      color:white;
+      border:none;
+    }
 
-.slider{
-margin-top:20px;
-height:360px;
-border-radius:18px;
-overflow:hidden;
-background:#dde5ff;
-position:relative;
-}
+    .secondary{
+      background:#eaf0ff;
+      border:none;
+    }
 
-.slides{display:flex;height:100%;transition:.6s}
-.slide{min-width:100%;display:flex;justify-content:center;align-items:center}
-.slide img{max-width:100%;max-height:100%;object-fit:contain}
+    .hero h1{
+      margin:16px 0 6px;
+      font-size:30px;
+      font-weight:900;
+      line-height:1.15;
+    }
 
-.arrow{
-position:absolute;top:50%;transform:translateY(-50%);
-width:44px;height:44px;border-radius:14px;
-background:rgba(0,0,0,.4);color:white;
-display:grid;place-items:center;cursor:pointer;font-size:22px;
-}
-.left{left:10px}.right{right:10px}
+    .hero p{
+      margin:0;
+      color:#555;
+      font-weight:700;
+    }
 
-.block{
-margin-top:22px;
-padding:22px;
-border-radius:22px;
-background:linear-gradient(135deg,#eef3ff,#ffffff);
-box-shadow:0 12px 30px rgba(0,0,0,.06);
-border:1px solid #dfe6ff;
-}
+    .slider{
+      margin-top:20px;
+      height:360px;
+      border-radius:18px;
+      overflow:hidden;
+      background:#dde5ff;
+      position:relative;
+    }
 
-.block h3{
-margin-top:0;
-display:flex;
-align-items:center;
-gap:10px;
-color:#1f4fd8;
-}
+    .slides{
+      display:flex;
+      height:100%;
+      transition:transform .6s ease;
+    }
 
-.num{
-background:#1f4fd8;
-color:white;
-width:32px;height:32px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:900;
-}
+    .slide{
+      min-width:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:10px;
+    }
 
-.block ul li{
-background:white;
-padding:10px 12px;
-border-radius:12px;
-margin:10px 0;
-box-shadow:0 4px 12px rgba(0,0,0,.05);
-font-weight:700;
-}
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:14px;
+    }
 
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:12px;
-}
+    .arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      background:rgba(0,0,0,.35);
+      color:white;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      font-size:22px;
+      user-select:none;
+    }
 
-th,td{
-border:1px solid #ddd;
-padding:10px;
-font-weight:800;
-}
+    .left{ left:10px; }
+    .right{ right:10px; }
 
-th{background:#eef3ff}
+    .main-grid{
+      display:grid;
+      gap:18px;
+      margin-top:22px;
+    }
 
-footer{text-align:center;margin:30px;color:#777;font-weight:800}
+    .block{
+      padding:22px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#eef3ff,#ffffff);
+      box-shadow:0 12px 30px rgba(0,0,0,.06);
+      border:1px solid #dfe6ff;
+    }
 
-</style>
+    .block h3{
+      margin:0 0 14px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#1f4fd8;
+      font-size:22px;
+      line-height:1.25;
+      flex-wrap:wrap;
+    }
+
+    .num{
+      background:#1f4fd8;
+      color:white;
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      flex:0 0 32px;
+    }
+
+    .block p{
+      margin:0 0 12px;
+      line-height:1.7;
+      font-weight:600;
+      color:#243247;
+    }
+
+    .block ul{
+      margin:0;
+      padding-left:0;
+      list-style:none;
+    }
+
+    .block ul li{
+      background:white;
+      padding:12px 14px;
+      border-radius:14px;
+      margin:10px 0;
+      box-shadow:0 4px 12px rgba(0,0,0,.05);
+      font-weight:700;
+      line-height:1.6;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:12px;
+      overflow:hidden;
+      border-radius:14px;
+      background:white;
+    }
+
+    th, td{
+      border:1px solid #dce3f0;
+      padding:12px;
+      text-align:left;
+      vertical-align:top;
+      font-weight:700;
+      line-height:1.5;
+    }
+
+    th{
+      background:#eef3ff;
+      color:#15337f;
+    }
+
+    .quote-block{
+      background:linear-gradient(135deg,#0ea5e9,#22c55e);
+      color:white;
+    }
+
+    .quote-block p{
+      color:white;
+      font-size:16px;
+      font-weight:800;
+      line-height:1.7;
+      margin:0;
+    }
+
+    footer{
+      text-align:center;
+      margin:26px 0 10px;
+      color:#667085;
+      font-weight:800;
+    }
+
+    @media (max-width:768px){
+      .container{
+        padding:12px;
+      }
+
+      header,
+      .block{
+        padding:16px;
+        border-radius:18px;
+      }
+
+      .hero h1{
+        font-size:24px;
+      }
+
+      .slider{
+        height:230px;
+      }
+
+      .block h3{
+        font-size:19px;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .actions{
+        width:100%;
+      }
+
+      .actions a{
+        flex:1 1 100%;
+      }
+
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr{
+        display:block;
+      }
+
+      thead{
+        display:none;
+      }
+
+      tr{
+        margin-bottom:12px;
+        border:1px solid #dce3f0;
+        border-radius:14px;
+        overflow:hidden;
+        background:white;
+      }
+
+      td{
+        border:none;
+        border-bottom:1px solid #edf1f7;
+      }
+
+      td:last-child{
+        border-bottom:none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="container">
 
-<div class="container">
+    <header>
+      <div class="top">
+        <img src="logoaxokit.png" class="logo" alt="Logo Axokit">
 
-<header>
+        <div class="actions">
+          <a href="comprendre.html" class="btn secondary">Comprendre l’offre de partenariat</a>
+          <a href="contact.html" class="btn primary">Répondre à Axokit</a>
+        </div>
+      </div>
 
-<div class="top">
-<img src="logoaxokit.png" class="logo">
-<div class="actions">
-<a href="comprendre.html" class="btn secondary">Comprendre l’offre de partenariat</a>
-<a href="contact.html" class="btn primary">Répondre à Axokit</a>
-</div>
-</div>
+      <div class="hero">
+        <h1>Petit-Déjeuner de la Réussite</h1>
+        <p>Proposition étatique — Axokit + <span class="bii">Bii</span></p>
+      </div>
 
-<div class="hero">
-<h1>Petit-Déjeuner de la Réussite</h1>
-<p>Proposition étatique — Axokit + <span class="bii">Bii</span></p>
-</div>
+      <div class="slider">
+        <div class="slides" id="slides">
+          <div class="slide"><img src="resto.png" alt="Illustration restauration scolaire"></div>
+          <div class="slide"><img src="aliment.png" alt="Illustration alimentation"></div>
+          <div class="slide"><img src="axokitaide.png" alt="Illustration Axokit aide"></div>
+        </div>
 
-<div class="slider">
-<div class="slides" id="slides">
-<div class="slide"><img src="resto.png"></div>
-<div class="slide"><img src="aliment.png"></div>
-<div class="slide"><img src="axokitaide.png"></div>
-</div>
-<div class="arrow left" onclick="move(-1)">‹</div>
-<div class="arrow right" onclick="move(1)">›</div>
-</div>
+        <div class="arrow left" onclick="move(-1)">‹</div>
+        <div class="arrow right" onclick="move(1)">›</div>
+      </div>
+    </header>
 
-</header>
+    <main class="main-grid">
 
-<div class="block">
+      <section class="block">
+        <h3><span class="num">1</span> Nutrition scolaire et réussite éducative</h3>
+        <p>
+          Afin de lever le frein de la faim sur l’apprentissage, nous proposons à l’État
+          d’utiliser notre plateforme pour orienter directement une part de ses redevances
+          vers un partenaire social.
+        </p>
+        <p>
+          Ce mécanisme permettra de financer l’opérateur <span class="bii">Bii</span>, ou toute autre structure
+          désignée par l’État, afin de garantir aux élèves un accès régulier aux repas,
+          condition essentielle de leur concentration, de leur assiduité et de leur réussite.
+        </p>
+      </section>
 
-<h3><span class="num">1</span>Nutrition scolaire et réussite éducative>
-  <p>
-    Afin de lever le frein de la faim sur l’apprentissage, nous proposons à l’État
-    d’utiliser notre plateforme pour orienter directement une part de ses redevances
-    vers un partenaire social.
-  </p>
-  <p>
-    Ce mécanisme permettra de financer l’opérateur Bii, ou toute autre structure
-    désignée par l’État, afin de garantir aux élèves un accès régulier aux repas,
-    condition essentielle de leur concentration, de leur assiduité et de leur réussite.
-  </p>
-</section>
+      <section class="block">
+        <h3><span class="num">2</span> Le boost massif pour <span class="bii">Bii</span></h3>
+        <p>
+          Aujourd’hui, <span class="bii">Bii</span> fait un travail admirable, mais encore limité par manque de moyens.
+        </p>
+        <ul>
+          <li>Capacité de collecte totale : camions + coursiers dans les 100 magasins chaque matin.</li>
+          <li>Fin des pertes : unité de transformation estimée à 400 000 € pour jus et compotes.</li>
+          <li>Sécurité totale : installation de frigos solaires dans chaque école.</li>
+        </ul>
+      </section>
 
-<div class="block">
-<h3><span class="num">2</span>Le Boost massif pour <span class="bii">Bii</span></h3>
+      <section class="block">
+        <h3><span class="num">3</span> L’impact : nourrir les enfants avant la classe</h3>
+        <ul>
+          <li>Collecte la veille : lait, fruits et produits de boulangerie.</li>
+          <li>Petit-déjeuner distribué chaque matin avant les cours.</li>
+          <li>73 000 enfants concernés, soit 14,6 millions de petits-déjeuners par an.</li>
+        </ul>
+      </section>
 
-<p>Aujourd'hui, <span class="bii">Bii</span> fait un travail admirable mais limité par manque de moyens.</p>
+      <section class="block">
+        <h3><span class="num">4</span> Pourquoi est-ce gagnant-gagnant ?</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>État</th>
+              <th>Enfants & <span class="bii">Bii</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Zéro budget public supplémentaire</td>
+              <td>Énergie pour apprendre</td>
+            </tr>
+            <tr>
+              <td>Lutte contre le gaspillage</td>
+              <td>Moyens d’action nationaux</td>
+            </tr>
+            <tr>
+              <td>Preuve par la donnée</td>
+              <td>Financement pérenne</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-<ul>
-<li>Capacité de Collecte Totale : camions + coursiers dans les 100 magasins chaque matin.</li>
-<li>Fin des pertes : unité de transformation 400 000 € pour jus et compotes.</li>
-<li>Sécurité Totale : frigos solaires dans chaque école.</li>
-</ul>
-</div>
+      <section class="block">
+        <h3>Conclusion</h3>
+        <ul>
+          <li><span class="bii">Bii</span> : bras nutritionnel</li>
+          <li>L’État : protecteur des enfants</li>
+          <li>Axokit : moteur numérique transparent</li>
+        </ul>
+      </section>
 
-<div class="block">
-<h3><span class="num">3</span>L’Impact : Nourrir les enfants AVANT la classe</h3>
+      <section class="block quote-block">
+        <p>
+          « Nous ne prétendons pas remplacer l’aide budgétaire des pays étrangers.
+          Nous apportons une solution technique de proximité.
+          Là où les grands pays gèrent la macro-économie, nous gérons la réalité de l’assiette.
+          Nous ne sommes pas des géants de la philanthropie, nous sommes des ingénieurs de la solidarité. »
+        </p>
+      </section>
 
-<ul>
-<li>Collecte la veille : lait, fruits, boulangerie.</li>
-<li>Petit-déjeuner chaque matin avant les cours.</li>
-<li>73 000 enfants – 14,6 millions de petits-déjeuners/an.</li>
-</ul>
-</div>
+    </main>
 
-<div class="block">
-<h3><span class="num">4</span>Pourquoi gagnant-gagnant ?</h3>
+    <footer>
+      Axokit — Petit-Déjeuner de la Réussite
+    </footer>
 
-<table>
-<tr><th>État</th><th>Enfants & <span class="bii">Bii</span></th></tr>
-<tr><td>Zéro budget public</td><td>Énergie pour apprendre</td></tr>
-<tr><td>Lutte gaspillage</td><td>Moyens d’agir nationaux</td></tr>
-<tr><td>Preuve par donnée</td><td>Financement pérenne</td></tr>
-</table>
-</div>
+  </div>
 
-<div class="block">
-<h3>Conclusion</h3>
+  <script>
+    let i = 0;
+    const totalSlides = 3;
 
-<ul>
-<li><span class="bii">Bii</span> bras nutritionnel</li>
-<li>L’État protecteur des enfants</li>
-<li>Axokit moteur numérique transparent</li>
-</ul>
-</div>
-<div class="block" style="background:linear-gradient(135deg,#0ea5e9,#22c55e);color:white">
-<p style="font-size:16px;font-weight:800;line-height:1.5;margin:0">
-“Nous ne prétendons pas remplacer l'aide budgétaire de pays étranger.  
-Nous apportons simplement une solution technique de proximité.  
-Là où les grands pays gèrent la macro-économie, nous gérons la réalité de l'assiette.  
-Nous ne sommes pas des géants de la philanthropie, nous sommes des ingénieurs de la solidarité.”
-</p>
-</div>
-<footer>
-Axokit — Petit-Déjeuner de la Réussite
-</footer>
+    function move(n){
+      const s = document.getElementById("slides");
+      i = (i + n + totalSlides) % totalSlides;
+      s.style.transform = "translateX(-" + (i * 100) + "%)";
+    }
 
-</div>
-
-<script>
-let i=0;
-function move(n){
-const s=document.getElementById("slides");
-i=(i+n+3)%3;
-s.style.transform="translateX(-"+(i*100)+"%)";
-}
-setInterval(()=>move(1),4000);
-</script>
-
+    setInterval(() => move(1), 4000);
+  </script>
 </body>
 </html>
